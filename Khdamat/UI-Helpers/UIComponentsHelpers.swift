@@ -150,6 +150,38 @@ class CustomTFs: UITextField{
     }
 }
 
+class CustomTFs1: UITextField{
+    let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        makeItCustom()
+    }
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        makeItCustom()
+    }
+    private func makeItCustom(){
+        
+        self.borderStyle = .none
+        self.backgroundColor = UIColor(named: "LightGray")
+        self.layer.cornerRadius = 8
+        self.clipsToBounds = false
+        
+    }
+}
+
 @IBDesignable
 class RoundedLabel: UILabel {
     

@@ -35,11 +35,13 @@ struct RentalCars: Codable {
 // MARK: - Datum
 struct Car: Codable {
     let id: Int
-    let office, country, brand, category: String
-    let color, year, image, price: String
-    let descriptionEn, descriptionAr, num, status: String
-    let createdAt, updatedAt: String
+    let office, country, brand, category: String?
+    let color, year, image, price: String?
+    let descriptionEn, descriptionAr, num, status: String?
+    let createdAt, updatedAt: String?
     let categoryObj, brandObj, colorObj: Obj
+    
+    var selected: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id, office, country, brand, category, color, year, image, price

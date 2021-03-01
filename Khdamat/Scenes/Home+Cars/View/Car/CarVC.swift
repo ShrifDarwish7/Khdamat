@@ -30,7 +30,7 @@ class CarVC: UIViewController {
         fromTime.makeDatePicker()
         toTime.makeDatePicker()
         
-        carImg.sd_setImage(with: URL(string: assetBaseUrl! + "/" + receivedCar!.image)!)
+        carImg.sd_setImage(with: URL(string: assetBaseUrl! + "/" + (receivedCar!.image ?? ""))!)
         
         if "lang".localized == "en"{
             name.text = receivedCar!.brandObj.nameEn + " - " + receivedCar!.categoryObj.nameEn + " - " + receivedCar!.colorObj.nameEn

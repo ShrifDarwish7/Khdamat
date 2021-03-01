@@ -13,5 +13,10 @@ class DrawerVC: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        APIServices.shared.isLogged = false
+        Router.toSignin(sender: self)
+    }
 
 }

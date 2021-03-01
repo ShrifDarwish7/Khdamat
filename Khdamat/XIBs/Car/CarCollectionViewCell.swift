@@ -20,7 +20,7 @@ class CarCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var state: UILabel!
     
     func loadFrom(_ data: Car, _ base: String){
-        carImg.sd_setImage(with: URL(string: base + "/" + data.image)!)
+        carImg.sd_setImage(with: URL(string: base + "/" + data.image!)!)
         if "lang".localized == "en"{
             name.text = data.brandObj.nameEn + " - " + data.categoryObj.nameEn + " - " + data.colorObj.nameEn
             desc.text = data.descriptionEn

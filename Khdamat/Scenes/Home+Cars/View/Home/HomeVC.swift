@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HomeVC: UIViewController{
 
@@ -13,10 +14,21 @@ class HomeVC: UIViewController{
     @IBOutlet weak var dialogPosition: NSLayoutConstraint!
     @IBOutlet weak var dialogName: UILabel!
     @IBOutlet weak var dialogImage: UIImageView!
+    @IBOutlet weak var rentalCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var skip: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var rentalStack: UIStackView!
+    
+    var carPeresenter: CarsPresenter!
+    var cars: [Car]?
+    var rentalCars: [Car]?
+    var services: [Service]?
+    var assetBaseUrl: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        carPeresenter = CarsPresenter(self)
+        carPeresenter.getRentalCars()
         setupSWRevealVC()
         dialogPosition.constant = self.view.frame.height
         blockView.addTapGesture { (_) in
@@ -32,7 +44,7 @@ class HomeVC: UIViewController{
     @IBAction func showDialog(_ sender: UIButton) {
         switch sender.tag {
         case 2:
-            Shared.selectedServices = .maintain
+            Shared.selectedServices = .garage
             dialogImage.image = UIImage(named: "car_maintain")
             dialogName.text = "Car maintenance"
             skip.isHidden = true
@@ -47,7 +59,7 @@ class HomeVC: UIViewController{
             dialogName.text = "Road service"
             skip.isHidden = false
         case 5:
-            Shared.selectedServices = .parts
+            Shared.selectedServices = .spareParts
             dialogImage.image = UIImage(named: "parts")
             dialogName.text = "Spare parts"
             skip.isHidden = false
@@ -73,7 +85,13 @@ class HomeVC: UIViewController{
     }
     
     @IBAction func toAddCar(_ sender: Any) {
-        Router.toAddCar(sender: self)
+        carPeresenter.getCarAtrributes()
+    }
+    
+    
+    @IBAction func toChooseCar(_ sender: Any) {
+        SVProgressHUD.show()
+        carPeresenter.getMyCars()
     }
     
 }

@@ -10,7 +10,7 @@ import CoreLocation
 
 class Shared{
     static let errorMsg = "An error occuered, please try again later".localized
-    static let headers = [
+    static var headers = [
         "Authorization": "Bearer " + (APIServices.shared.user?.result?.accessToken ?? ""),
         "Accept": "application/json"
     ]
@@ -30,11 +30,12 @@ enum MapState{
     case to
 }
 
-enum SelectedService{
-    case renting
+enum SelectedService: String{
+    case renting = "rental"
     case selling
-    case maintain
-    case wash
-    case parts
-    case road
+    case garage
+    case wash = "carwash"
+    case spareParts
+    case road = "roadhelp"
 }
+

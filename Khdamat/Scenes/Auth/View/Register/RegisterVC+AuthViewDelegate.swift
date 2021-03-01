@@ -17,7 +17,7 @@ extension RegisterVC: AuthViewDelegate{
     }
     func didCompleteSignUp(_ data: LoginResponse?, _ error: String?) {
         if let _ = data{
-            Router.toVerifyCode(sender: self, type: .account)
+            Router.toVerifyCode(sender: self, type: .account, emailOrMobile: "")
         }else if let _ = error{
             showToast(message: error!)
         }else{

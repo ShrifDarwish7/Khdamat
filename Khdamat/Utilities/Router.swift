@@ -24,15 +24,18 @@ class Router{
         let vc = storyboard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
         sender.navigationController?.pushViewController(vc, animated: true)
     }
-    static func toForgetPass(sender: UIViewController){
+    static func toForgetPass(sender: UIViewController, emailOrMobile: String, otp: String){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ForgotPassVC") as! ForgotPassVC
+        vc.emailorMobile = emailOrMobile
+        vc.otp = otp
         sender.navigationController?.pushViewController(vc, animated: true)
     }
-    static func toVerifyCode(sender: UIViewController, type: VerifyType){
+    static func toVerifyCode(sender: UIViewController, type: VerifyType, emailOrMobile: String){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCodeVC") as! VerifyCodeVC
         vc.verifyType = type
+        vc.emailOrMobile = emailOrMobile
         sender.navigationController?.pushViewController(vc, animated: true)
     }
     static func toHome(sender: UIViewController){
@@ -62,15 +65,24 @@ class Router{
         let vc = storyboard.instantiateViewController(withIdentifier: "MapVC") as! MapVC
         sender.navigationController?.pushViewController(vc, animated: true)
     }
-    static func toFollowOrder(sender: UIViewController, bookData: BookData?){
+    static func toFollowOrder(sender: UIViewController, bookData: BookData?, myBook: MyBook?){
         let storyboard = UIStoryboard(name: "Cars", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FollowOrderVC") as! FollowOrderVC
         vc.bookData = bookData
+        vc.myBook = myBook
         sender.navigationController?.pushViewController(vc, animated: true)
     }
-    static func toAddCar(sender: UIViewController){
+    static func toAddCar(sender: UIViewController, _ att: CarAttributes){
         let storyboard = UIStoryboard(name: "Cars", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddCarVC") as! AddCarVC
+        vc.attributes = att
+        sender.navigationController?.pushViewController(vc, animated: true)
+    }
+    static func toChooseCar(sender: UIViewController,_ cars: [Car]?, _ services: [Service]?){
+        let storyboard = UIStoryboard(name: "Cars", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ChooseCarVC") as! ChooseCarVC
+        vc.cars = cars
+        vc.services = services
         sender.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -17,9 +17,14 @@ class VerifyCodeVC: UIViewController {
     @IBOutlet weak var code6: UITextField!
     
     var verifyType: VerifyType?
+    var authPresenter: AuthPresenter?
+    var emailOrMobile: String?
+    var otp: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        authPresenter = AuthPresenter(self)
         
         code1.becomeFirstResponder()
         
@@ -84,10 +89,25 @@ class VerifyCodeVC: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        guard !(self.code1.text?.isEmpty)!,!(self.code2.text?.isEmpty)!,!(self.code3.text?.isEmpty)!,!(self.code4.text?.isEmpty)!,!(self.code5.text?.isEmpty)!, !(self.code6.text?.isEmpty)! else {
+        guard !(self.code1.text?.isEmpty)!,!(self.code2.text?.isEmpty)!,!(self.code3.text?.isEmpty)!,!(self.code4.text?.isEmpty)!/*,!(self.code5.text?.isEmpty)!, !(self.code6.text?.isEmpty)!*/ else {
             return
         }
-        let code = (self.code1.text! + self.code2.text! + self.code3.text! + self.code4.text! + self.code5.text!)
+        self.otp = (self.code1.text! + self.code2.text! + self.code3.text! + self.code4.text! + self.code5.text!)
+        switch self.verifyType {
+        case .forgotPass:
+            let prms: [String: String] = [
+                "emailOrmobile": self.emailOrMobile!,
+                "otp": self.otp!
+            ]
+            self.authPresenter?.verifyOtp(prms)
+        case .account:
+            let prms: [String: String] = [
+                "otp": self.otp!
+            ]
+            self.authPresenter?.verifyAccount(prms)
+        default:
+            break
+        }
         
     }
     

@@ -14,7 +14,8 @@ class FollowOrderVC: UIViewController {
     @IBOutlet weak var orderDate: UILabel!
     @IBOutlet weak var implementService: UILabel!
     
-    var bookData: BookData?
+    var bookData: BookData? // rental
+    var myBook: MyBook? // any order except rental
     
     override func viewDidLoad() {
         super.viewDidLoad()

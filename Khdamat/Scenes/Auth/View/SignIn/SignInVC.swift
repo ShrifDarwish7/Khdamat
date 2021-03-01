@@ -48,11 +48,8 @@ class SignInVC: UIViewController {
             showToast(message: "First enter your email or phone")
             return
         }
-        if !emailTF.text!.contains("@"){
-            Router.toVerifyCode(sender: self, type: .forgotPass)
-        }else{
-            Router.toForgetPass(sender: self)
-        }
+        authPresenter.forgetPassword(["emailOrmobile": self.emailTF.text!])
+        
     }
     
     @IBAction func signinAction(_ sender: Any) {

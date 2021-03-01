@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>In order to upload photos, we need your permision to access your photo gallery</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>In order to use our services, we need your permision to access your location</string>
 	<key>NSLocationUsageDescription</key>

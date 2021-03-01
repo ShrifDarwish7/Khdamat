@@ -24,5 +24,12 @@ extension SignInVC: AuthViewDelegate{
             self.showToast(message: Shared.errorMsg)
         }
     }
+    func didCompleteForgetPassword(_ error: String?) {
+        if let error = error{
+            showToast(message: error)
+        }else{
+            Router.toVerifyCode(sender: self, type: .forgotPass, emailOrMobile: self.emailTF.text!)
+        }
+    }
     
 }

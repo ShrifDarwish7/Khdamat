@@ -19,7 +19,7 @@ extension RentingCarsVC: CarsViewDelegate{
         if let _ = data{
             self.cars = data?.data
             self.assetBaseUrl = data?.imageURL
-            self.loadCollection()
+           // self.loadCollection()
         }else if let error = error{
             self.showToast(message: error)
         }else{

@@ -395,6 +395,9 @@
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whw-vr-Y8C">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                                        <connections>
+                                                            <action selector="logout:" destination="l13-QV-PoH" eventType="touchUpInside" id="a9H-FW-gQr"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

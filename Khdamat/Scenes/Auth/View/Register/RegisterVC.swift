@@ -69,7 +69,7 @@ class RegisterVC: UIViewController {
             "name": fullNameTF.text!,
             "email": emailTF.text!,
             "code": dialCode,
-            "phone": FPNTextfield!.text!,
+            "phone": FPNTextfield!.text!.replacingOccurrences(of: " ", with: ""),
             "password": passTF.text!,
             "verify_password": confirmPassTF.text!
         ]

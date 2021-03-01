@@ -17,7 +17,7 @@ extension CarVC: CarsViewDelegate{
         SVProgressHUD.dismiss()
     }
     func didCompleteRentalBook(_ data: BookingResponse?, _ error: String?) {
-        Router.toFollowOrder(sender: self, bookData: nil)
+        Router.toFollowOrder(sender: self, bookData: nil, myBook: nil)
         if let data = data{
             self.carsPresenter?.getRentalBook(data.result!.booking)
         }else if let error = error{
@@ -28,7 +28,7 @@ extension CarVC: CarsViewDelegate{
     }
     func didCompleteGetRentalBook(_ data: BookData?, _ error: String?) {
         if let data = data{
-            Router.toFollowOrder(sender: self, bookData: data)
+            Router.toFollowOrder(sender: self, bookData: data, myBook: nil)
         }else if let error = error{
             self.showToast(message: error)
         }else{
